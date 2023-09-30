@@ -1,0 +1,1 @@
+This repository contains a backend service that handles user authentication and registration. The service is built using Node.js. This backend service provides functionality for user authentication and registration. It is designed to be integrated into a larger system, such as a web application or mobile app, to manage user accounts securely.
