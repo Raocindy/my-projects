@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const cookieSession = require("cookie-session");
-const Sequelize = requirre("sequelize")
+const Sequelize = require("sequelize");
 
 const app = express();
 
@@ -29,9 +29,10 @@ const sequelize = new Sequelize({
     dialect: "mysql",
 });
 
-const RoleModel = require('./\models\role.model.js');
+const middleware = require('./middleware');
+const RoleModel = require('./models/role.model.js');
 const UserModel = require('./models/model.js');
-const database = require('.\app\database.config.js');
+const database = require('./app/database.config.js');
 const Role = database.role;
 
 sequelize.sync({ force: true }).then(() => {
@@ -56,6 +57,11 @@ function initial() {
   });
 }
 
+// Routes setup
+require('./routes/auth.routes.js')(app);
+require('./routes/user.routes.js')(app);
+
+// Simple route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to Cindy application." });
 });
