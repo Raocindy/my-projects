@@ -10,7 +10,7 @@ ws.on('open', () => {
 });
 
 ws.on('message', (message: string) => {
-    console.log('Received a message from the server: ${message}');
+    console.log(` ${message}`);
 });
 
 ws.on('close', () => {
